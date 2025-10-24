@@ -39,7 +39,7 @@ function execute_repllike(str)
     captured_output = Pipe()
     response = redirect_stdout(captured_output) do
         redirect_stderr(captured_output) do
-            r = REPL.eval_with_backend(expr, backend)
+            r = REPL.eval_on_backend(expr, backend)
             close(Base.pipe_writer(captured_output))
             r
         end
